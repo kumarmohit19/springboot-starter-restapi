@@ -17,22 +17,24 @@ public class HospitalService {
 
 
 public List<Hospital> getAllHospitals(){
-	return null;
+  List<Hospital> hospitalList= new ArrayList<Hospital>();
+	hospitalRepository.findAll().forEach(hospitalList::add);
+	return hospitalList;
 }
 
 public Hospital getHospital(int id){
-	return null;
+	return hospitalRepository.findOne(id);
 }
 
 public void addHospital(Hospital hospital){
-
+  hospitalRepository.save(hospital);
 }
 
 public void updateHospital(Hospital hospital){
-
+  hospitalRepository.save(hospital);
 }
 
 public void deleteHospital(Hospital hospital) {
-
+  hospitalRepository.delete(hospital);
 }
 }

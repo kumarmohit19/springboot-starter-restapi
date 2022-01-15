@@ -18,38 +18,39 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test/")
 public class HospitalController {
 
-    @Autowired
-    private HospitalService hospitalService;
+  @Autowired
+  private HospitalService hospitalService;
 
 
+  @RequestMapping(value="hospitals/{id}", method = RequestMethod.GET)
+  public @ResponseBody Hospital getHospital(@PathVariable("id") int id) throws Exception {
 
-public @ResponseBody Hospital getHospital(@PathVariable("id") int id) throws Exception {
+    return hospitalService.getHospital(id);
+  }
 
-        return null;
-    }
-
-
-public @ResponseBody List<Hospital> getAllHospitals() throws Exception {
-		return null;
-    }
-
-
-
-public ResponseEntity<String> addHospital(@RequestBody Hospital hospital  ) {
-
-	return null;
-}
+  @RequestMapping(value="hospitals/", method = RequestMethod.GET)
+  public @ResponseBody List<Hospital> getAllHospitals() throws Exception {
+    return hospitalService.getAllHospitals();
+  }
 
 
-public ResponseEntity<String> updateHospital(@RequestBody Hospital hospital) {
-	
-	return null;
-}
+  @RequestMapping(value="hospitals/", method = RequestMethod.POST)
+  public ResponseEntity<String> addHospital(@RequestBody Hospital hospital  ) {
+    hospitalService.addHospital(hospital);
+    return ResponseEntity.ok().build();
+  }
 
+  @RequestMapping(value="hospitals/", method = RequestMethod.PUT)
+  public ResponseEntity<String> updateHospital(@RequestBody Hospital hospital) {
+    hospitalService.updateHospital(hospital);
+    return ResponseEntity.ok().build();
+  }
 
-public ResponseEntity<String> deleteHospital(@RequestBody Hospital hospital) {
+  @RequestMapping(value="hospitals/", method = RequestMethod.DELETE)
+  public ResponseEntity<String> deleteHospital(@RequestBody Hospital hospital) {
 
-	return null;
-}
+    hospitalService.deleteHospital(hospital);
+    return ResponseEntity.noContent().build();
+  }
 
 }
