@@ -37,7 +37,7 @@ public class HospitalController {
   @RequestMapping(value="hospitals/", method = RequestMethod.POST)
   public ResponseEntity<String> addHospital(@RequestBody Hospital hospital  ) {
     hospitalService.addHospital(hospital);
-    return ResponseEntity.ok(hospital).build();
+    return ResponseEntity.ok().build();
   }
 
   @RequestMapping(value="hospitals/", method = RequestMethod.PUT)
