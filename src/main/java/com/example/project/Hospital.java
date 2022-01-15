@@ -33,7 +33,6 @@ public class Hospital {
   }
   
   @Id
-  @GeneratedValue
   private int id;
   private String name;
   private String city;
